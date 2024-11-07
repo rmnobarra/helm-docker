@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helm-client
+  labels:
+    app: helm-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helm-client
+  template:
+    metadata:
+      labels:
+        app: helm-client
+    spec:
+      containers:
+      - name: helm-client
+        image: rmnobarra/helm-docker:latest
+        imagePullPolicy: Always
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "100m"
+          limits:
+            memory: "128Mi"
+            cpu: "200m" 
